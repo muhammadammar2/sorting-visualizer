@@ -6,6 +6,9 @@ import ArrayVisualizer from "./components/ArrayVisualizer";
 const App = () => {
   const [array, setArray] = useState<number[]>([]);
   const [algorithm, setAlgorithm] = useState<string>("bubble");
+  const [comparingIndices, setComparingIndices] = useState<number[]>([]);
+  const [swappingIndices, setSwappingIndices] = useState<number[]>([]);
+  const [delay, setDelay] = useState<number>(30); // delay in ms for visualization
 
   const generateArray = (size: number) => {
     const newArray = Array.from({ length: size }, () =>
@@ -17,7 +20,13 @@ const App = () => {
   const startSorting = () => {
     switch (algorithm) {
       case "bubble":
-        bubbleSort(array, setArray);
+        bubbleSort(
+          array,
+          setArray,
+          setComparingIndices,
+          setSwappingIndices,
+          delay
+        );
         break;
       // Add other cases for other sorting algorithms
     }
@@ -34,7 +43,12 @@ const App = () => {
         setAlgorithm={setAlgorithm}
         startSorting={startSorting}
       />
-      <ArrayVisualizer array={array} className="mt-8" />
+      <ArrayVisualizer
+        array={array}
+        comparingIndices={comparingIndices}
+        swappingIndices={swappingIndices}
+        className="mt-8"
+      />
     </div>
   );
 };
