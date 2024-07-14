@@ -14,15 +14,15 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
   const [arraySize, setArraySize] = useState<number>(50);
 
   const handleArraySizeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newSize = Number(e.target);
+    const newSize = Number(e.target.value);
     setArraySize(newSize);
     generateArray(newSize);
   };
 
   return (
-    <div className="control-panel flex flex-col items-center space-y-4">
+    <div className="control-panel flex flex-row items-center space-x-4 mb-8">
       <button
-        className="bg-blue-500 text-white px-4 py-2 rounded"
+        className="bg-blue-500 text-white px-4 py-2 rounded w-40"
         onClick={() => generateArray(arraySize)}
       >
         Generate Array
@@ -45,7 +45,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
         className="w-full"
       />
       <button
-        className="bg-green-500 text-white px-4 py-2 rounded"
+        className="bg-green-500 text-white px-4 py-2 rounded w-40"
         onClick={startSorting}
       >
         Start Sorting
