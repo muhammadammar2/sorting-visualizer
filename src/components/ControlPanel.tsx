@@ -35,6 +35,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
       >
         <option value="bubble">Bubble Sort</option>
         <option value="merge">Merge Sort</option>
+        <option value="heap">Heap Sort</option>
         {/* Add other algorithms here */}
       </select>
       <input

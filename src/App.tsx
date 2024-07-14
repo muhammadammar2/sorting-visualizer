@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { bubbleSort } from "./sortingAlgorithms/bubbleSort";
+import { bubbleSort } from "./sortingAlgosLogic&Visulization/bubbleSort";
 import ControlPanel from "./components/ControlPanel";
 import ArrayVisualizer from "./components/ArrayVisualizer";
+import { heapSort } from "./sortingAlgosLogic&Visulization/heapSort";
 
 const App = () => {
   const [array, setArray] = useState<number[]>([]);
   const [algorithm, setAlgorithm] = useState<Algorithm>("bubble");
   const [comparingIndices, setComparingIndices] = useState<number[]>([]);
   const [swappingIndices, setSwappingIndices] = useState<number[]>([]);
-  const [delay, setDelay] = useState<number>(30); // delay in ms for visualization
+  const [delay, setDelay] = useState<number>(20); // delay in ms for visualization
 
-  type Algorithm = "bubble" | "merge"; // add other algos types here
+  type Algorithm = "bubble" | "merge" | "heap"; // add other algos types here
 
   interface AlgorithmInfo {
     pseudocode: string;
@@ -35,6 +36,14 @@ const App = () => {
           delay
         );
         break;
+      case "heap":
+        heapSort(
+          array,
+          setArray,
+          setComparingIndices,
+          setSwappingIndices,
+          delay
+        );
       // add other cases for other sorting algorithms
     }
   };
@@ -67,6 +76,14 @@ for j = 0 to n - i - 1
  Best-Case Scenario: O(n log n)
  Average & Worst-Case: O(n log n)
  Space Complexity: O(n)`,
+    },
+    heap: {
+      pseudocode: `
+        here
+      `,
+      timeComplexity: `
+        here
+      `,
     },
     // add other algorithms here
   };
