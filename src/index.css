@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body.dark {
+  background-color: #1a202c;
+  color: #a0aec0;
+}
+
+.array-bar {
+  transition: height 0.2s ease;
+  background-color: #3182ce;
+}

@@ -1,26 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { bubbleSort } from "./sortingAlgorithms/bubbleSort";
+import ControlPanel from "./components/ControlPanel";
+import ArrayVisualizer from "./components/ArrayVisualizer";
 
-function App() {
+const App = () => {
+  const [array, setArray] = useState<number[]>([]);
+  const [algorithm, setAlgorithm] = useState<string>("bubble");
+
+  const generateArray = (size: number) => {
+    const newArray = Array.from({ length: size }, () =>
+      Math.floor(Math.random() * 100)
+    );
+    setArray(newArray);
+  };
+
+  const startSorting = () => {
+    switch (algorithm) {
+      case "bubble":
+        bubbleSort(array, setArray);
+        break;
+      // case "bubble":
+      // bubbleSort(array, setArray);
+      // break;
+    }
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App bg-gray-900 text-white min-h-screen flex flex-col items-center">
+      <ControlPanel
+        generateArray={generateArray}
+        setAlgorithm={setAlgorithm}
+        startSorting={startSorting}
+      />
+      <ArrayVisualizer array={array} />
     </div>
   );
-}
-
+};
 export default App;

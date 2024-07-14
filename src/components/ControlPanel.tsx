@@ -1,0 +1,57 @@
+import React, { useState } from "react";
+
+export type ControlPanelProps = {
+  generateArray: (size: number) => void;
+  setAlgorithm: (algo: string) => void;
+  startSorting: () => void;
+};
+
+const ControlPanel: React.FC<ControlPanelProps> = ({
+  generateArray,
+  setAlgorithm,
+  startSorting,
+}) => {
+  const [arraySize, setArraySize] = useState<number>(50);
+
+  const handleArraySizeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newSize = Number(e.target);
+    setArraySize(newSize);
+    generateArray(newSize);
+  };
+
+  return (
+    <div className="control-panel flex flex-col items-center space-y-4">
+      <button
+        className="bg-blue-500 text-white px-4 py-2 rounded"
+        onClick={() => generateArray(arraySize)}
+      >
+        Generate Array
+      </button>
+      <select
+        className="bg-gray-700 text-white px-4 py-2 rounded"
+        onChange={(e) => setAlgorithm(e.target.value)}
+      >
+        <option value="bubble">Bubble Sort</option>
+        <option value="heap">Heap Sort</option>
+        <option value="merge">Merge Sort</option>
+        <option value="quick">Quick Sort</option>
+      </select>
+      <input
+        type="range"
+        min="10"
+        max="100"
+        value={arraySize}
+        onChange={handleArraySizeChange}
+        className="w-full"
+      />
+      <button
+        className="bg-green-500 text-white px-4 py-2 rounded"
+        onClick={startSorting}
+      >
+        Start Sorting
+      </button>
+    </div>
+  );
+};
+
+export default ControlPanel;
