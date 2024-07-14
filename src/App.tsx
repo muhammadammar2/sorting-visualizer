@@ -45,10 +45,11 @@ const App = () => {
 
   const algorithmInfo: Record<Algorithm, AlgorithmInfo> = {
     bubble: {
-      pseudocode: `for i = 0 to n - 1
-     for j = 0 to n - i - 1
-          if (array[j] > array[j + 1])
-               swap(array[j], array[j + 1])`,
+      pseudocode: ` PseudoCode
+ for i = 0 to n - 1
+for j = 0 to n - i - 1
+ if (array[j] > array[j + 1])
+ swap(array[j], array[j + 1])`,
       timeComplexity: `Time Complexity: O(n^2)
  Best-Case Scenario: O(n) => (when the array is already sorted)
  Average & Worst-Case: O(n^2)
