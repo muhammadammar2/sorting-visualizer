@@ -45,39 +45,33 @@ const App = () => {
 
   const algorithmInfo: Record<Algorithm, AlgorithmInfo> = {
     bubble: {
-      pseudocode: `
-    for i = 0 to n - 1
-    for j = 0 to n - i - 1
-    if (array[j] > array[j + 1])
-    swap(array[j], array[j + 1])
-    `,
-      timeComplexity: `
-        Time Complexity : O(n^2)
-         Best-Case Scenario : O(n) => (when the array is already sorted)
-         Average & Worst-Case : O(n^2)
-         Space Complexity : O(1)
-      `,
+      pseudocode: `for i = 0 to n - 1
+     for j = 0 to n - i - 1
+          if (array[j] > array[j + 1])
+               swap(array[j], array[j + 1])`,
+      timeComplexity: `Time Complexity: O(n^2)
+ Best-Case Scenario: O(n) => (when the array is already sorted)
+ Average & Worst-Case: O(n^2)
+ Space Complexity: O(1)`,
     },
     merge: {
-      pseudocode: `
-      function mergeSort(arr)
-        if length(arr) <= 1
+      pseudocode: `function mergeSort(arr)
+     if length(arr) <= 1
           return arr
-        mid = length(arr) / 2
-        left = mergeSort(arr[0...mid])
-        right = mergeSort(arr[mid...end])
-        return merge(left, right)
-    `,
-      timeComplexity: `
-        //here
-
-      `,
+     mid = length(arr) / 2
+     left = mergeSort(arr[0...mid])
+     right = mergeSort(arr[mid...end])
+     return merge(left, right)`,
+      timeComplexity: `Time Complexity: O(n log n)
+ Best-Case Scenario: O(n log n)
+ Average & Worst-Case: O(n log n)
+ Space Complexity: O(n)`,
     },
     // add other algorithms here
   };
 
   return (
-    <div className="App bg-gray-900 text-white min-h-screen flex flex-col items-center pt-8">
+    <div className="App bg-gray-900 text-white min-h-screen flex flex-col items-center pt-8 overflow-hidden">
       <ControlPanel
         generateArray={generateArray}
         setAlgorithm={setAlgorithm}
@@ -89,12 +83,11 @@ const App = () => {
         swappingIndices={swappingIndices}
         className="mt-8"
       />
-
-      <div className="w-full text-center mb-8">
-        <pre className="bg-gray-800 p-4 rounded whitespace-pre">
+      <div className="w-full text-center mb-4 flex flex-col items-center mt-8">
+        <pre className="bg-gray-800 p-2 rounded whitespace-pre text-sm">
           {algorithmInfo[algorithm]?.pseudocode || "Pseudocode not available"}
         </pre>
-        <pre className="bg-gray-800 p-4 rounded whitespace-pre mt-4">
+        <pre className="bg-gray-800 p-2 rounded whitespace-pre text-sm mt-2">
           {algorithmInfo[algorithm]?.timeComplexity ||
             "Time Complexity not available"}
         </pre>
