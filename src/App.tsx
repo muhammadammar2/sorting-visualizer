@@ -14,7 +14,6 @@ const App = () => {
   type Algorithm = "bubble" | "merge" | "heap"; // add other algos types here
 
   interface AlgorithmInfo {
-    pseudocode: string;
     timeComplexity: string;
   }
 
@@ -54,35 +53,26 @@ const App = () => {
 
   const algorithmInfo: Record<Algorithm, AlgorithmInfo> = {
     bubble: {
-      pseudocode: ` PseudoCode
- for i = 0 to n - 1
-for j = 0 to n - i - 1
- if (array[j] > array[j + 1])
- swap(array[j], array[j + 1])`,
       timeComplexity: `Time Complexity: O(n^2)
  Best-Case Scenario: O(n) => (when the array is already sorted)
  Average & Worst-Case: O(n^2)
  Space Complexity: O(1)`,
     },
     merge: {
-      pseudocode: `function mergeSort(arr)
-     if length(arr) <= 1
-          return arr
-     mid = length(arr) / 2
-     left = mergeSort(arr[0...mid])
-     right = mergeSort(arr[mid...end])
-     return merge(left, right)`,
       timeComplexity: `Time Complexity: O(n log n)
  Best-Case Scenario: O(n log n)
  Average & Worst-Case: O(n log n)
  Space Complexity: O(n)`,
     },
     heap: {
-      pseudocode: `
-        here
-      `,
-      timeComplexity: `
-        here
+      timeComplexity: `Time Complexity : O(n log n)
+  Best , Worst , Average all are same
+
+Building the heap : O(n)
+Extracting the heap : O(n log n)
+
+O(n) + O(n log n) = O(n log n)
+Space Complexity: O(1)
       `,
     },
     // add other algorithms here
@@ -102,9 +92,6 @@ for j = 0 to n - i - 1
         className="mt-8"
       />
       <div className="w-full text-center mb-4 flex flex-col items-center mt-8">
-        <pre className="bg-gray-800 p-2 rounded whitespace-pre text-sm">
-          {algorithmInfo[algorithm]?.pseudocode || "Pseudocode not available"}
-        </pre>
         <pre className="bg-gray-800 p-2 rounded whitespace-pre text-sm mt-2">
           {algorithmInfo[algorithm]?.timeComplexity ||
             "Time Complexity not available"}
