@@ -43,7 +43,7 @@ const App = () => {
           setSwappingIndices,
           delay
         );
-      // add other cases for other sorting algorithms
+     // add other cases for other sorting algorithms
     }
   };
 
